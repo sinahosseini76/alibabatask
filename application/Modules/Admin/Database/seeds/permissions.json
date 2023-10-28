@@ -1,0 +1,52 @@
+
+        [
+            {
+                "name" : "role-list",
+                "description" : "List of roles"
+            },
+            {
+                "name" : "role-create",
+                "description" : "Create new role"
+            },
+            {
+                "name" : "role-edit",
+                "description" : "edit role"
+            },
+            {
+                "name" : "role-delete",
+                "description" : "delete role"
+            },
+            {
+                "name" : "permission-list",
+                "description" : "permission list"
+            },
+            {
+                "name" : "permission-create",
+                "description" : "permission create"
+            },
+            {
+                "name" : "permission-edit",
+                "description" : "permission edit"
+            },
+            {
+                "name" : "permission-delete",
+                "description" : "permission delete"
+            },
+            {
+                "name" : "admin-list",
+                "description" : "admin list"
+            },
+            {
+                "name" : "admin-create",
+                "description" : "admin create"
+            },
+            {
+                "name" : "admin-edit",
+                "description" : "admin edit"
+            },
+            {
+                "name" : "admin-delete",
+                "description" : "admin delete"
+            }
+        ]
+

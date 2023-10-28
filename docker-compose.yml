@@ -1,0 +1,65 @@
+version: '3'
+services:
+  article_alibaba_mysql:
+    hostname: article_alibaba_mysql
+    container_name : article_alibaba_mysql
+    image : mysql:8.0
+    restart: unless-stopped
+    env_file: ./docker/mysql/.env
+    ports:
+      - "3309:3306"
+    volumes :
+      - "./docker/data/mysql/article_alibaba:/var/lib/mysql"
+      - "./docker/data/mysql/backup:/data/backups"
+    networks:
+      - article_alibaba_network
+  article_alibaba_php :
+    hostname: article_alibaba_php
+    build : ./docker/php
+    container_name : article_alibaba_php
+    restart: unless-stopped
+    ports:
+      - "9100:9200"
+    volumes :
+      - "./application:/var/www/article_alibaba"
+      - "./docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini"
+    networks:
+      - article_alibaba_network
+  article_alibaba_nginx :
+    hostname : article_alibaba_nginx
+    build : ./docker/nginx
+    container_name : article_alibaba_nginx
+    restart : always
+    ports :
+      - "8030:80"
+    volumes :
+      - "./docker/nginx/conf.d:/etc/nginx/conf.d/"
+      - "./application:/var/www/article_alibaba"
+    links:
+      - article_alibaba_php
+    networks :
+      - article_alibaba_network
+  article_alibaba_redis:
+    hostname: article_alibaba_redis
+    build: ./docker/redis
+    container_name: article_alibaba_redis
+    ports:
+      - "127.0.0.1:6390:6379"
+    expose:
+      - '6379'
+    volumes:
+      - ./docker/data/redis:/data
+    sysctls:
+      - net.core.somaxconn=511
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+    networks:
+      - article_alibaba_network
+networks:
+  article_alibaba_network:
+    external:
+      name: article_alibaba_network
