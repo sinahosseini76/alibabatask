@@ -61,7 +61,7 @@ This project use the following ports :
 
 | Server     | Port |
 |------------|------|
-| MySQL      | 3320 |
+| MySQL      | 3309 |
 | Nginx      | 8030 |
 | redis      | 6390 |
 | php        | 9100 |
