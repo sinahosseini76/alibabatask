@@ -1,5 +1,5 @@
 
-# Sourceinja Online Manu
+# Alibaba Task
 
 ## Overview
 
@@ -71,7 +71,6 @@ ___
 
 ## Clone the project
 
-To install [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), download it and install following the instructions :
 
 ```sh
 git clone https://gitlab.com/resturant-management-system/onlinemenu
@@ -80,7 +79,7 @@ git clone https://gitlab.com/resturant-management-system/onlinemenu
 Go to the project directory :
 
 ```sh
-cd onlinemenu
+cd project name 
 ```
 
 ### Project tree
@@ -135,7 +134,9 @@ ___
 3. run migration
 
     ```sh
+    docker exec  -it article_alibaba_php composer install
     docker exec  -it article_alibaba_php php artisan migrate --seed
+    docker exec  -it article_alibaba_php php artisan jwt:secret
     ```
 4. Stop and clear services
 
